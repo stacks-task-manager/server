@@ -1,0 +1,7 @@
+{{define "body"}}
+<p>
+    <strong>{{.currentUser}}</strong> has completed a task.
+</p>
+
+{{block "task-details" .task}}{{end}}
+{{end}}
