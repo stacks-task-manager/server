@@ -1,183 +1,5 @@
 [
   {
-    "id": "60hpfyrvaotnfud",
-    "name": "notepads",
-    "type": "base",
-    "system": false,
-    "schema": [
-      {
-        "system": false,
-        "id": "wf2xmgek",
-        "name": "title",
-        "type": "text",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "uiybdpo8",
-        "name": "content",
-        "type": "json",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {}
-      },
-      {
-        "system": false,
-        "id": "opzzwmck",
-        "name": "editingBy",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "gc4j3fap",
-        "name": "owner",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "u2nblvpm",
-        "name": "public",
-        "type": "bool",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {}
-      },
-      {
-        "system": false,
-        "id": "gp9zgpo5",
-        "name": "visibleUsers",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 100,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "ob41cmgc",
-        "name": "visibleRoles",
-        "type": "select",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "maxSelect": 4,
-          "values": [
-            "manager",
-            "user",
-            "collaborator",
-            "client"
-          ]
-        }
-      },
-      {
-        "system": false,
-        "id": "vsw2ravs",
-        "name": "updatedBy",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "ksqjrabl",
-        "name": "createdBy",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "vlo6zb30",
-        "name": "deleted",
-        "type": "date",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": "",
-          "max": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "nmyximnu",
-        "name": "deletedBy",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      }
-    ],
-    "indexes": [
-      "CREATE INDEX `notebooks_created_idx` ON \"notepads\" (`created`)"
-    ],
-    "listRule": "@request.auth.id != \"\" && deleted = \"\" && (@request.auth.role = \"admin\" || owner = @request.auth.id || public = true || visibleUsers ~ @request.auth.id || visibleRoles ~ @request.auth.role)",
-    "viewRule": "@request.auth.id != \"\" && deleted = \"\" && (@request.auth.role = \"admin\" || owner = @request.auth.id || public = true || visibleUsers ~ @request.auth.id || visibleRoles ~ @request.auth.role)",
-    "createRule": "@request.auth.id != ''",
-    "updateRule": "@request.auth.id != \"\" && deleted = \"\" && (@request.auth.role = \"admin\" || owner = @request.auth.id || public = true || visibleUsers ~ @request.auth.id || visibleRoles ~ @request.auth.role)",
-    "deleteRule": null,
-    "options": {}
-  },
-  {
     "id": "0dzbqmu5a5k8rg0",
     "name": "bookmarks",
     "type": "base",
@@ -336,174 +158,6 @@
     ],
     "listRule": "deleted = \"\" && @request.auth.id != \"\" && owner = @request.auth.id",
     "viewRule": "deleted = \"\" && @request.auth.id != \"\" && owner = @request.auth.id",
-    "createRule": "@request.auth.id != \"\"",
-    "updateRule": "deleted = \"\" && @request.auth.id != \"\" && owner = @request.auth.id",
-    "deleteRule": null,
-    "options": {}
-  },
-  {
-    "id": "scd1nmdapnw6jvw",
-    "name": "activities",
-    "type": "base",
-    "system": false,
-    "schema": [
-      {
-        "system": false,
-        "id": "qgwrbaoh",
-        "name": "type",
-        "type": "select",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "maxSelect": 1,
-          "values": [
-            "message",
-            "log"
-          ]
-        }
-      },
-      {
-        "system": false,
-        "id": "jfwbnu4y",
-        "name": "content",
-        "type": "text",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "6xpntndg",
-        "name": "person",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "kqqgybs0",
-        "name": "parent",
-        "type": "text",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "g12hwl5c",
-        "name": "resource",
-        "type": "text",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "r6uiriqb",
-        "name": "owner",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "jhipatrc",
-        "name": "createdBy",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "moevi0bt",
-        "name": "updatedBy",
-        "type": "relation",
-        "required": true,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "gxnqi1xf",
-        "name": "deleted",
-        "type": "date",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": "",
-          "max": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "gnbsmicn",
-        "name": "deletedBy",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "systemprofiles0",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      }
-    ],
-    "indexes": [
-      "CREATE INDEX `activities_created_idx` ON `activities` (`created`)"
-    ],
-    "listRule": "@request.auth.id != \"\" && deleted = \"\"",
-    "viewRule": "@request.auth.id != \"\" && deleted = \"\"",
     "createRule": "@request.auth.id != \"\"",
     "updateRule": "deleted = \"\" && @request.auth.id != \"\" && owner = @request.auth.id",
     "deleteRule": null,
@@ -4029,6 +3683,384 @@
     "viewRule": "@request.auth.id != \"\" && deleted = \"\"",
     "createRule": "@request.auth.id != \"\"",
     "updateRule": "deleted = \"\" && @request.auth.id != \"\"",
+    "deleteRule": null,
+    "options": {}
+  },
+  {
+    "id": "scd1nmdapnw6jvw",
+    "name": "activities",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "system": false,
+        "id": "qgwrbaoh",
+        "name": "type",
+        "type": "select",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "values": [
+            "message",
+            "log"
+          ]
+        }
+      },
+      {
+        "system": false,
+        "id": "jfwbnu4y",
+        "name": "content",
+        "type": "text",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "4ku77aa1",
+        "name": "files",
+        "type": "file",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 99,
+          "maxSize": 5242880,
+          "mimeTypes": [],
+          "thumbs": [],
+          "protected": false
+        }
+      },
+      {
+        "system": false,
+        "id": "6xpntndg",
+        "name": "person",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "kqqgybs0",
+        "name": "parent",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "g12hwl5c",
+        "name": "resource",
+        "type": "text",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "r6uiriqb",
+        "name": "owner",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "jhipatrc",
+        "name": "createdBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "moevi0bt",
+        "name": "updatedBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "gxnqi1xf",
+        "name": "deleted",
+        "type": "date",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": "",
+          "max": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "gnbsmicn",
+        "name": "deletedBy",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      }
+    ],
+    "indexes": [
+      "CREATE INDEX `activities_created_idx` ON `activities` (`created`)"
+    ],
+    "listRule": "@request.auth.id != \"\" && deleted = \"\"",
+    "viewRule": "@request.auth.id != \"\" && deleted = \"\"",
+    "createRule": "@request.auth.id != \"\"",
+    "updateRule": "deleted = \"\" && @request.auth.id != \"\" && owner = @request.auth.id",
+    "deleteRule": null,
+    "options": {}
+  },
+  {
+    "id": "60hpfyrvaotnfud",
+    "name": "notepads",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "system": false,
+        "id": "wf2xmgek",
+        "name": "title",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "uiybdpo8",
+        "name": "content",
+        "type": "json",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {}
+      },
+      {
+        "system": false,
+        "id": "rl5rmxtx",
+        "name": "files",
+        "type": "file",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 99,
+          "maxSize": 5242880,
+          "mimeTypes": [],
+          "thumbs": [],
+          "protected": false
+        }
+      },
+      {
+        "system": false,
+        "id": "opzzwmck",
+        "name": "editingBy",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "gc4j3fap",
+        "name": "owner",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "u2nblvpm",
+        "name": "public",
+        "type": "bool",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {}
+      },
+      {
+        "system": false,
+        "id": "gp9zgpo5",
+        "name": "visibleUsers",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 100,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "ob41cmgc",
+        "name": "visibleRoles",
+        "type": "select",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 4,
+          "values": [
+            "manager",
+            "user",
+            "collaborator",
+            "client"
+          ]
+        }
+      },
+      {
+        "system": false,
+        "id": "vsw2ravs",
+        "name": "updatedBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "ksqjrabl",
+        "name": "createdBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "vlo6zb30",
+        "name": "deleted",
+        "type": "date",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": "",
+          "max": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "nmyximnu",
+        "name": "deletedBy",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      }
+    ],
+    "indexes": [
+      "CREATE INDEX `notebooks_created_idx` ON `notepads` (`created`)"
+    ],
+    "listRule": "@request.auth.id != \"\" && deleted = \"\" && (@request.auth.role = \"admin\" || owner = @request.auth.id || public = true || visibleUsers ~ @request.auth.id || visibleRoles ~ @request.auth.role)",
+    "viewRule": "@request.auth.id != \"\" && deleted = \"\" && (@request.auth.role = \"admin\" || owner = @request.auth.id || public = true || visibleUsers ~ @request.auth.id || visibleRoles ~ @request.auth.role)",
+    "createRule": "@request.auth.id != ''",
+    "updateRule": "@request.auth.id != \"\" && deleted = \"\" && (@request.auth.role = \"admin\" || owner = @request.auth.id || public = true || visibleUsers ~ @request.auth.id || visibleRoles ~ @request.auth.role)",
     "deleteRule": null,
     "options": {}
   }
