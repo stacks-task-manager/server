@@ -2107,14 +2107,14 @@
     "options": {}
   },
   {
-    "id": "p1lxacgq0phwgfi",
-    "name": "home",
+    "id": "1w0dmqoilf2qw9i",
+    "name": "homeNotes",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "gwfdey21",
+        "id": "rxhywcqi",
         "name": "notes",
         "type": "json",
         "required": false,
@@ -2126,20 +2126,257 @@
       },
       {
         "system": false,
-        "id": "9tjrl7c2",
-        "name": "todos",
-        "type": "json",
-        "required": false,
+        "id": "ebnumzqi",
+        "name": "owner",
+        "type": "relation",
+        "required": true,
         "presentable": false,
         "unique": false,
         "options": {
-          "maxSize": 2000000
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
         }
       },
       {
         "system": false,
-        "id": "ftxbqgnh",
-        "name": "user",
+        "id": "ywj1u1fe",
+        "name": "deleted",
+        "type": "date",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": "",
+          "max": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "e1fgikll",
+        "name": "deletedBy",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "1xxfasfq",
+        "name": "createdBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "lnpiskf8",
+        "name": "updatedBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      }
+    ],
+    "indexes": [],
+    "listRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "viewRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "createRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "updateRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "deleteRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "options": {}
+  },
+  {
+    "id": "fexwq9lw8prflty",
+    "name": "homeSorting",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "system": false,
+        "id": "fnuk9h0x",
+        "name": "sorting",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "5x7injum",
+        "name": "owner",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      }
+    ],
+    "indexes": [],
+    "listRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "viewRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "createRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "updateRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "deleteRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "options": {}
+  },
+  {
+    "id": "edhr13rn2mxecn0",
+    "name": "homeTodos",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "system": false,
+        "id": "vlrsbt5s",
+        "name": "title",
+        "type": "text",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "xdniv28o",
+        "name": "date",
+        "type": "date",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": "",
+          "max": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "ruxmqdvs",
+        "name": "completed",
+        "type": "bool",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {}
+      },
+      {
+        "system": false,
+        "id": "rvli1uma",
+        "name": "order",
+        "type": "number",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "noDecimal": false
+        }
+      },
+      {
+        "system": false,
+        "id": "phiw8s3w",
+        "name": "owner",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "snpi7xum",
+        "name": "createdBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "5jiajjtq",
+        "name": "updatedBy",
+        "type": "relation",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "systemprofiles0",
+          "cascadeDelete": false,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "c5manxxm",
+        "name": "deleted",
+        "type": "date",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": "",
+          "max": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "to0yya38",
+        "name": "deletedBy",
         "type": "relation",
         "required": false,
         "presentable": false,
@@ -2154,11 +2391,11 @@
       }
     ],
     "indexes": [],
-    "listRule": "@request.auth.id != \"\" && @request.auth.id = user.id",
-    "viewRule": "@request.auth.id != \"\" && @request.auth.id = user.id",
-    "createRule": null,
-    "updateRule": "@request.auth.id != \"\" && @request.auth.id = user.id",
-    "deleteRule": "@request.auth.id != \"\" && @request.auth.id = user.id",
+    "listRule": "@request.auth.id != \"\" && @request.auth.id = owner && deleted = \"\"",
+    "viewRule": "@request.auth.id != \"\" && @request.auth.id = owner && deleted = \"\"",
+    "createRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "updateRule": "@request.auth.id != \"\" && @request.auth.id = owner",
+    "deleteRule": "@request.auth.id != \"\" && @request.auth.id = owner",
     "options": {}
   },
   {
