@@ -3029,6 +3029,19 @@
       },
       {
         "system": false,
+        "id": "40zu0hvl",
+        "name": "backgroundUrl",
+        "type": "url",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "exceptDomains": null,
+          "onlyDomains": null
+        }
+      },
+      {
+        "system": false,
         "id": "woedyesj",
         "name": "public",
         "type": "bool",
